@@ -32,7 +32,6 @@ html {
 }
 
 body {
-  border: 1px dashed green;
   height: 100vh;
   display: flex;
   flex-direction: column;
