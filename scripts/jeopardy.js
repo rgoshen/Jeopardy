@@ -1,5 +1,6 @@
 const NUM_CATEGORIES = 6;
 const NUM_QUESTIONS_PER_CAT = 5;
+const BASE_API_URL = "https://jservice.io/api/";
 // categories is the main data structure for the app; it looks like this:
 
 //  [
@@ -27,7 +28,16 @@ let categories = [];
  * Returns array of category ids
  */
 
-function getCategoryIds() {}
+async function getCategoryIds() {
+  // ask for the max number of categories so we can pick random
+  // added the offset to ensure total random
+  let offset = Math.floor(Math.random() * 200) * 100;
+  let response = await axios.get(
+    `${BASE_API_URL}categories?count=100&offset=${offset}`
+  );
+  let catIds = response.data.map((cat) => cat.id);
+  return _.sampleSize(catIds, NUM_CATEGORIES);
+}
 
 /** Return object with data about a category:
  *
@@ -41,7 +51,19 @@ function getCategoryIds() {}
  *   ]
  */
 
-function getCategory(catId) {}
+async function getCategory(catId) {
+  let response = await axios.get(`${BASE_API_URL}category?id=${catId}`);
+  let cat = response.data;
+  let allClues = cat.clues;
+  let randomClues = _.sampleSize(allClues, NUM_QUESTIONS_PER_CAT);
+  let clues = randomClues.map((clue) => ({
+    question: clue.question,
+    answer: clue.answer,
+    showing: null,
+  }));
+
+  return { title: cat.title, clues };
+}
 
 /** Fill the HTML table#jeopardy with the categories & cells for questions.
  *
@@ -51,9 +73,7 @@ function getCategory(catId) {}
  *   (initally, just show a "?" where the question/answer would go.)
  */
 
-async function fillTable() {}
-
-function renderBoard() {
+async function fillTable() {
   $("body").append($("<table>").attr("id", "jeopardy"));
 
   $("#jeopardy").append($("<thead>"));
@@ -95,11 +115,18 @@ function handleClick(evt) {}
  * and update the button used to fetch data.
  */
 
-function showLoadingView() {}
+function showLoadingView() {
+  $("button").text("Loading...");
+  $("#jeopardy").empty();
+  $(".loader").removeClass("hidden");
+}
 
 /** Remove the loading spinner and update the button used to fetch data. */
 
-function hideLoadingView() {}
+function hideLoadingView() {
+  $(".loader").addClass("hidden");
+  $("button").text("Restart");
+}
 
 /** Start game:
  *
@@ -108,11 +135,23 @@ function hideLoadingView() {}
  * - create HTML table
  * */
 
-async function setupAndStart() {}
+async function setupAndStart() {
+  showLoadingView();
+  let catIds = await getCategoryIds();
+
+  categories = [];
+
+  for (let catId of catIds) {
+    categories.push(await getCategory(catId));
+  }
+
+  fillTable();
+  hideLoadingView();
+}
 
 /** On click of start / restart button, set up game. */
 
-// TODO
+$("button").on("click", setupAndStart);
 
 /** On page load, add event handler for clicking clues */
 
