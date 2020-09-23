@@ -29,19 +29,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-    #1c0e9f,
-    #5a0a99,
-    #910a9f,
-    #d11c89,
-    #ef548c,
-    #f36868,
-    #f6984a,
-    #d11c89,
-    #8a3bd5,
-    #521bce,
-    #8b9db9
-  );
+  background-image: linear-gradient(#1c0e9f,
+      #5a0a99,
+      #910a9f,
+      #d11c89,
+      #ef548c,
+      #f36868,
+      #f6984a,
+      #d11c89,
+      #8a3bd5,
+      #521bce,
+      #8b9db9);
   text-transform: uppercase;
 }
 
@@ -69,7 +67,7 @@ table {
 th,
 td {
   border: 4px solid black;
-  width: 12em;
+  width: 12rem;
   padding: 2.5rem 0.5rem;
   text-align: center;
   vertical-align: middle;
@@ -84,7 +82,7 @@ th {
 }
 
 td {
-  height: 9em;
+  height: 8rem;
 }
 
 .initial {
@@ -121,12 +119,10 @@ button {
   font-style: normal;
   font-variant: normal;
   text-transform: none;
-  background-image: linear-gradient(
-    to right,
-    rgb(28, 110, 164) 0%,
-    rgb(35, 136, 203) 50%,
-    rgb(20, 78, 117) 100%
-  );
+  background-image: linear-gradient(to right,
+      rgb(28, 110, 164) 0%,
+      rgb(35, 136, 203) 50%,
+      rgb(20, 78, 117) 100%);
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   border: 2px solid rgb(28, 110, 164);
   display: inline-block;
