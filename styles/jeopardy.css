@@ -29,17 +29,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(#1c0e9f,
-      #5a0a99,
-      #910a9f,
-      #d11c89,
-      #ef548c,
-      #f36868,
-      #f6984a,
-      #d11c89,
-      #8a3bd5,
-      #521bce,
-      #8b9db9);
+  background-image: linear-gradient(
+    #1c0e9f,
+    #5a0a99,
+    #910a9f,
+    #d11c89,
+    #ef548c,
+    #f36868,
+    #f6984a,
+    #d11c89,
+    #8a3bd5,
+    #521bce,
+    #8b9db9
+  );
   text-transform: uppercase;
 }
 
@@ -60,7 +62,7 @@ table {
   border-collapse: collapse;
   width: 80%;
   margin: 1rem;
-  font-size: 0.68rem;
+  font-size: 1rem;
 }
 
 th,
@@ -118,10 +120,12 @@ button {
   font-style: normal;
   font-variant: normal;
   text-transform: none;
-  background-image: linear-gradient(to right,
-      rgb(28, 110, 164) 0%,
-      rgb(35, 136, 203) 50%,
-      rgb(20, 78, 117) 100%);
+  background-image: linear-gradient(
+    to right,
+    rgb(28, 110, 164) 0%,
+    rgb(35, 136, 203) 50%,
+    rgb(20, 78, 117) 100%
+  );
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   border: 2px solid rgb(28, 110, 164);
   display: inline-block;
@@ -191,5 +195,35 @@ button:active {
 
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  table {
+    /* padding: 20px 5px; */
+    width: 95%;
+  }
+
+  thead {
+    font-size: 0.75rem;
+  }
+
+  tbody {
+    font-size: 0.75rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  table {
+    /* padding: 20px 5px; */
+    width: 95%;
+  }
+
+  thead {
+    font-size: 0.75rem;
+  }
+
+  tbody {
+    font-size: 0.6rem;
   }
 }
