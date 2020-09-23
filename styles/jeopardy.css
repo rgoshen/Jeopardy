@@ -59,7 +59,7 @@ table {
   border: 6px solid black;
   border-collapse: collapse;
   width: 70%;
-  table-layout: fixed;
+  /* table-layout: fixed; */
   margin: 1rem;
   font-size: 0.75rem;
 }
