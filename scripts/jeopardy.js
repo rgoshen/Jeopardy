@@ -74,8 +74,6 @@ async function getCategory(catId) {
  */
 
 async function fillTable() {
-  $("body").append($("<table>").attr("id", "jeopardy"));
-
   $("#jeopardy").append($("<thead>"));
   $("#jeopardy").append($("<tbody>"));
 
