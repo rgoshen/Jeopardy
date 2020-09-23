@@ -130,7 +130,7 @@ function handleClick(evt) {
   }
 
   // Update text of cell
-  $(`#${cellId}`).text(display);
+  $(`#${cellId}`).html(display);
 }
 
 /** Wipe the current Jeopardy board, show the loading spinner,
